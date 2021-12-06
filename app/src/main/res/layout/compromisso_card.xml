@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/compromisso_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_marginTop="12dp"
+
+    android:backgroundTint="@color/dark_theme_gray"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <View
+            android:id="@+id/color_view"
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+
+            android:background="@color/dark_theme_red"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+
+            >
+
+            <TextView
+                android:id="@+id/data_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="10 de Dezembro"
+                android:textColor="@color/dark_theme_red"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/titulo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Farmácia"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/descricao_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Comprar uma caixa de Paracetamol e outra de Nimesulida"
+                android:textColor="#9AFFFFFF"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
