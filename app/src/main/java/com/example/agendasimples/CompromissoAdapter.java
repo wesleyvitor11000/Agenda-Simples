@@ -38,9 +38,10 @@ public class CompromissoAdapter extends RecyclerView.Adapter<CompromissoAdapter.
             Compromisso compromisso = compromissos.get(position);
             int cardColor = Cores.getCor(compromisso.getColorId());
 
-            holder.titulo_text.setText(compromisso.getTitulo());
             holder.data_text.setText(compromisso.getData());
             holder.data_text.setTextColor(cardColor);
+            holder.titulo_text.setText(compromisso.getTitulo());
+            holder.descricao_text.setText(compromisso.getDescricao());
             holder.color_view.setBackgroundColor(cardColor);
 
         }

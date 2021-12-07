@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    private static ArrayList<Compromisso> compromissos;
+    private static String compromissosS = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,36 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView rv = findViewById(R.id.compromissos_recycle);
-        ArrayList<Compromisso> compromissos;
         CompromissoAdapter compromissoAdapter;
+        FloatingActionButton addButton = findViewById(R.id.add_button);
 
-//        Compromisso c1 = new Compromisso("10 de Dezembro", "Farmácia", 0);
-//        Compromisso c2 = new Compromisso("02 de Janeiro", "Dentista", 1);
-//        Compromisso c3 = new Compromisso("23 de Outubro", "Supermercado", 0);
-//        Compromisso c4 = new Compromisso("10 de Dezembro", "Farmácia", 2);
-//        Compromisso c5 = new Compromisso("02 de Janeiro", "Dentista", 3);
-//        Compromisso c6 = new Compromisso("23 de Outubro", "Supermercado", 1);
-//
-//        compromissos.add(c1);
-//        compromissos.add(c2);
-//        compromissos.add(c3);
-//        compromissos.add(c4);
-//        compromissos.add(c5);
-//        compromissos.add(c6);/
-
-//        String compromissosS = "#\n" +
-//                "data: 16 de Dezembro\n" +
-//                "titulo: Farmácia\n" +
-//                "idColor: 0\n" +
-//                "\n" +
-//                "#\n" +
-//                "data: 12 de Dezembro\n" +
-//                "titulo: Supermercado\n" +
-//                "idColor: 1\n";
-
-        String compromissosS = FileUtil.recuperarCompromissos(getAssets());
-
-        compromissos = CompromissosManager.getCompromissosFromText(compromissosS);
+        if(compromissosS == null){
+            compromissosS = FileUtil.recuperarCompromissos(this);
+            compromissos = CompromissosManager.getCompromissosFromString(compromissosS);
+        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(linearLayoutManager);
@@ -53,5 +37,19 @@ public class MainActivity extends AppCompatActivity {
         compromissoAdapter = new CompromissoAdapter(compromissos);
         rv.setAdapter(compromissoAdapter);
 
+
+        addButton.setOnClickListener(view -> addCompromissoActivity());
+
+
+    }
+
+    private void addCompromissoActivity(){
+        Intent intent = new Intent(MainActivity.this, AddCompromissoActicity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public static void addComrpomisso(Compromisso compromisso){
+        compromissos.add(compromisso);
     }
 }

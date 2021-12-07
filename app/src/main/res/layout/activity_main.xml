@@ -41,6 +41,7 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
 
