@@ -71,15 +71,11 @@ public class CompromissosManager {
             return compromissoString;
         }
 
-        compromissoString = "\n#\n";
-        compromissoString += "data: " + compromisso.getData() + "\n";
-        compromissoString += "titulo: " + compromisso.getTitulo() + "\n";
-        compromissoString += "descricao: " + compromisso.getDescricao() + "\n";
-        compromissoString += "idColor: " + compromisso.getColorId() + "\n";
-
-        System.out.println("SALVO ---->   \n" );
-        System.out.println(compromissoString);
-
+        compromissoString = "\n#\n" +
+                             "data: " + compromisso.getData() + "\n" +
+                             "titulo: " + compromisso.getTitulo() + "\n" +
+                             "descricao: " + compromisso.getDescricao() + "\n" +
+                             "idColor: " + compromisso.getColorId() + "\n";
 
         return compromissoString;
 
