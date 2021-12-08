@@ -29,6 +29,25 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/empty_compromissos_text"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/topbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:padding="12dp"
+
+        android:visibility="invisible"
+
+        android:text="Clique no botão abaixo para adicionar um novo compromisso"
+        android:textColor="#979797"
+        android:textSize="16sp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/compromissos_recycle"
         android:layout_width="match_parent"
