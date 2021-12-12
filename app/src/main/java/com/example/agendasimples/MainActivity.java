@@ -60,4 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public static void addComrpomisso(Compromisso compromisso){
         compromissos.add(compromisso);
     }
+
+    public static void atualizarCompromisso(Compromisso novoCompromisso, int posicao) {
+        compromissos.set(posicao, novoCompromisso);
+    }
 }

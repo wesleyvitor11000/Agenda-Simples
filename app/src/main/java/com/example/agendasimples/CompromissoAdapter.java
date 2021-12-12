@@ -74,6 +74,7 @@ public class CompromissoAdapter extends RecyclerView.Adapter<CompromissoAdapter.
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(c, AddCompromissoActicity.class);
                 intent.putExtra("COMPROMISSO", compromissos.get(getAdapterPosition()));
+                intent.putExtra("POSITION", getAdapterPosition());
                 c.startActivity(intent);
             });
         }
