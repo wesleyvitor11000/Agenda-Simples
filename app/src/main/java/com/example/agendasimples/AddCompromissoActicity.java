@@ -64,7 +64,7 @@ public class AddCompromissoActicity extends AppCompatActivity {
         int posicao = (int)bundle.get("POSITION");
 
         MainActivity.atualizarCompromisso(compromisso, posicao);
-        //FileUtil.salvarCompromisso(compromisso, AddCompromissoActicity.this);
+        FileUtil.editarCompromissos(compromisso, posicao, AddCompromissoActicity.this);
 
         mainActivityScreen();
 

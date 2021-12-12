@@ -63,6 +63,95 @@ public class CompromissosManager {
 
     }
 
+    public static String editCompromissoOnString(Compromisso novoValor, String compromissos, int posicao){
+
+        System.out.println(posicao);
+        System.out.println(compromissos);
+
+        String novoComrpomisso = getStringFromCompromisso(novoValor);
+        String oldCompromisso = "";
+
+        int end = 1;
+        int start = 0;
+
+        String compromissosEditado = "";
+
+        for(int i = 0; i <= posicao; i++){
+
+            if(end==-1){return compromissos;}
+
+            System.out.println("Start -> " + start + " End -> " + end);
+
+            start = compromissos.indexOf("#", end - 1);
+
+            System.out.println("Start -> " + start + " End -> " + end);
+
+            if(start == -1){return compromissos;}
+
+            System.out.println("Start -> " + start + " End -> " + end);
+
+            end = compromissos.indexOf("#", start + 1);
+
+            System.out.println("Start -> " + start + " End -> " + end);
+        }
+
+        if(end == -1){
+            oldCompromisso = compromissos.substring(start);
+        }else{
+            oldCompromisso = compromissos.substring(start, end);
+        }
+
+        System.out.println(oldCompromisso);
+
+        novoComrpomisso = compromissos.replace(oldCompromisso, novoComrpomisso);
+
+        System.out.println("NOVO COMPROMISSO ---> ");
+        System.out.println(novoComrpomisso);
+
+        return novoComrpomisso;
+
+    }
+
+    public static String editCompromissoOnString1(Compromisso novoValor, String compromissos, int posicao){
+
+        String novoCompromisso = getStringFromCompromisso(novoValor);
+        String compromissoAtual = "";
+        int end = 1;
+        int start;
+        int atualIndex = 0;
+        String editado;
+
+        while(atualIndex <= posicao){
+
+            start = compromissos.indexOf("#", end-1);
+
+            if(start != -1) {
+                end = compromissos.indexOf("#", start);
+
+                if(atualIndex == posicao){
+                    if(end == -1){
+                        compromissoAtual = compromissos.substring(start);
+                    }else{
+                        compromissoAtual = compromissos.substring(start, end);
+                    }
+
+                    break;
+                }
+
+                if(end == -1) break;
+
+            }else{
+                break;
+            }
+
+            atualIndex++;
+
+        }
+
+        editado = compromissos.replace(compromissoAtual, novoCompromisso);
+        return editado;
+    }
+
     public static String getStringFromCompromisso(Compromisso compromisso){
 
         String compromissoString = "";

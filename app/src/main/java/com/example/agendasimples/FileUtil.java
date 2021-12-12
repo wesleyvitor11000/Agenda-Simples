@@ -49,22 +49,34 @@ public class FileUtil {
 
     }
 
+    public static void editarCompromissos(Compromisso novoCompromisso, int posicao, Context c){
+
+        String atualCompromissos = recuperarCompromissos(c);
+        String compromissosEditado = CompromissosManager.editCompromissoOnString(novoCompromisso, atualCompromissos, posicao);
+
+        stringToFile(compromissosEditado, c);
+    }
+
     public static void salvarCompromisso(Compromisso compromisso, Context c){
 
         String compromissoString = recuperarCompromissos(c);
+
         compromissoString += CompromissosManager.getStringFromCompromisso(compromisso);
 
+        stringToFile(compromissoString, c);
+
+    }
+
+    private static void stringToFile(String compromissos, Context c){
         try {
             FileOutputStream file = c.openFileOutput(compromissosFileName, Context.MODE_PRIVATE);
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(file);
-            outputStreamWriter.write(compromissoString);
+            outputStreamWriter.write(compromissos);
 
             outputStreamWriter.close();
         } catch (IOException e) {
             //****LOG HERE***********
         }
-
-
     }
 
     @NonNull

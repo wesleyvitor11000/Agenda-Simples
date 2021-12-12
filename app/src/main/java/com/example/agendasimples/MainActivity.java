@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        this.finishAffinity();
+    }
+
     private void addCompromissoActivity(){
         Intent intent = new Intent(MainActivity.this, AddCompromissoActicity.class);
         startActivity(intent);
