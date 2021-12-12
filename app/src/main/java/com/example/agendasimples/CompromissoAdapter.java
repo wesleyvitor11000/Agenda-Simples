@@ -1,5 +1,7 @@
 package com.example.agendasimples;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ public class CompromissoAdapter extends RecyclerView.Adapter<CompromissoAdapter.
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.compromisso_card, parent, false);
 
-        ViewHolderCompromisso viewHolderCompromisso = new ViewHolderCompromisso(view);
+        ViewHolderCompromisso viewHolderCompromisso = new ViewHolderCompromisso(view, parent.getContext());
 
         return viewHolderCompromisso;
     }
@@ -61,13 +63,19 @@ public class CompromissoAdapter extends RecyclerView.Adapter<CompromissoAdapter.
         public View       color_view;
 
 
-        public ViewHolderCompromisso(@NonNull View itemView) {
+        public ViewHolderCompromisso(@NonNull View itemView, Context c) {
             super(itemView);
 
             data_text       = itemView.findViewById(R.id.data_text);
             titulo_text     = itemView.findViewById(R.id.titulo_text);
             descricao_text  = itemView.findViewById(R.id.descricao_text);
             color_view      = itemView.findViewById(R.id.color_view);
+
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(c, AddCompromissoActicity.class);
+                intent.putExtra("COMPROMISSO", compromissos.get(getAdapterPosition()));
+                c.startActivity(intent);
+            });
         }
     }
 }

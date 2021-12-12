@@ -1,6 +1,8 @@
 package com.example.agendasimples;
 
-public class Compromisso {
+import java.io.Serializable;
+
+public class Compromisso implements Serializable {
 
     private String data;
     private String titulo;

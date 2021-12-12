@@ -26,7 +26,21 @@ public class AddCompromissoActicity extends AppCompatActivity {
         descricaoInput = findViewById(R.id.descricao_input);
         colorIdInput = findViewById(R.id.colorId_input);
 
+        recuperarExtras();
         save_button.setOnClickListener(view -> adicionarCompromisso());
+    }
+
+    private void recuperarExtras(){
+        if(getIntent().hasExtra("COMPROMISSO")){
+            Bundle bundle = getIntent().getExtras();
+            Compromisso compromisso = (Compromisso) bundle.get("COMPROMISSO");
+
+            dataInput.setText(compromisso.getData());
+            tituloInput.setText(compromisso.getTitulo());
+            descricaoInput.setText(compromisso.getDescricao());
+            colorIdInput.setText(String.valueOf(compromisso.getColorId()));
+
+        }
     }
 
     private void adicionarCompromisso() {
