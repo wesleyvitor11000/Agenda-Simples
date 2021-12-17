@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class AddCompromissoActicity extends AppCompatActivity {
 
     TextView dateText;
@@ -34,16 +39,32 @@ public class AddCompromissoActicity extends AppCompatActivity {
         View testeView = layoutInflater.inflate(R.layout.date_picker_layout, null);
 
         DatePicker datePicker = (DatePicker) testeView.findViewById(R.id.date);
+        ///////datePicker.updateDate();
         
         builder.setPositiveButton("Ok", (dialogInterface, i) -> {
-            String dateString = datePicker.getDayOfMonth() +
-                    " / " + datePicker.getMonth();
-            dateText.setText(dateString);
+
+            Locale local = new Locale("pt","BR");
+            DateFormat dateFormat= new SimpleDateFormat("dd 'de' MMM ',' yyyy",local);
+
+            Calendar calendar = getCalendarFromDatePicker(datePicker);
+
+            dateText.setText(dateFormat.format(calendar.getTime()));
         });
 
         builder.setView(testeView);
         builder.show();
 
+    }
+
+    public static Calendar getCalendarFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year = datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        return calendar;
     }
 
 }
