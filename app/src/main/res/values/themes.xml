@@ -22,4 +22,23 @@
     <style name="Theme.AgendaSimples.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AgendaSimples.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Card_ripple" parent="Widget.MaterialComponents.CardView">
+        <item name="android:background">@drawable/ripple_effect</item>
+    </style>
+
+    <style name="DatePicker" parent="@android:style/Widget.DeviceDefault.DatePicker">
+        <item name="android:headerBackground">@color/dark_theme_gray</item>
+        <item name="android:headerMonthTextAppearance">@style/DatePicker_text</item>
+    </style>
+
+    <style name="DatePicker_text" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="add_activity_text" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

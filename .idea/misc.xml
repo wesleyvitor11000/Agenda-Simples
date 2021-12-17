@@ -4,11 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.20833333333333334" />
-        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/activity_add_compromisso_acticity.xml" value="0.22" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/drawable/radio_button_collor.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/drawable/ripple_effect.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/activity_add_compromisso_acticity.xml" value="0.25" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/activity_add_compromisso_acticity_backup.xml" value="0.1390625" />
         <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/activity_main_activity2teste.xml" value="0.2" />
         <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/add_compromisso_layout.xml" value="0.18" />
         <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/compromisso_card.xml" value="0.22" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/data_picker_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Cliente/AndroidStudioProjects/AgendaSimples/app/src/main/res/layout/date_picker_layout.xml" value="0.2" />
       </map>
     </option>
   </component>

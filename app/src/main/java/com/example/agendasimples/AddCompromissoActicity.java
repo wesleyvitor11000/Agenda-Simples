@@ -1,95 +1,49 @@
 package com.example.agendasimples;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
 
 public class AddCompromissoActicity extends AppCompatActivity {
 
-    private EditText dataInput;
-    private EditText tituloInput;
-    private EditText descricaoInput;
-    private EditText colorIdInput;
+    TextView dateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_compromisso_acticity);
 
-        boolean editing = false;
-        FloatingActionButton save_button = findViewById(R.id.save_button);
-        dataInput = findViewById(R.id.data_input);
-        tituloInput  = findViewById(R.id.titulo_input);
-        descricaoInput = findViewById(R.id.descricao_input);
-        colorIdInput = findViewById(R.id.colorId_input);
+        dateText = findViewById(R.id.data_text);
+        Button changeDateButton = findViewById(R.id.change_date_button);
 
-        editing = recuperarExtras();
-
-        if(editing){
-            save_button.setOnClickListener(view -> atualizarCompromisso());
-        }else{
-            save_button.setOnClickListener(view -> adicionarCompromisso());
-        }
+        changeDateButton.setOnClickListener(view -> calendarDialog());
 
     }
 
-    private boolean recuperarExtras(){
-        if(getIntent().hasExtra("COMPROMISSO")){
-            Bundle bundle = getIntent().getExtras();
-            Compromisso compromisso = (Compromisso) bundle.get("COMPROMISSO");
+    public void calendarDialog(){
 
-            dataInput.setText(compromisso.getData());
-            tituloInput.setText(compromisso.getTitulo());
-            descricaoInput.setText(compromisso.getDescricao());
-            colorIdInput.setText(String.valueOf(compromisso.getColorId()));
-            return true;
-        }
-        return false;
-    }
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddCompromissoActicity.this);
 
-    private void atualizarCompromisso(){
+        LayoutInflater layoutInflater = LayoutInflater.from(AddCompromissoActicity.this);
+        View testeView = layoutInflater.inflate(R.layout.date_picker_layout, null);
 
-        int colorId = Integer.parseInt(colorIdInput.getText().toString());
-        String data = dataInput.getText().toString();
-        String titulo = tituloInput.getText().toString();
-        String descricao = descricaoInput.getText().toString();
+        DatePicker datePicker = (DatePicker) testeView.findViewById(R.id.date);
+        
+        builder.setPositiveButton("Ok", (dialogInterface, i) -> {
+            String dateString = datePicker.getDayOfMonth() +
+                    " / " + datePicker.getMonth();
+            dateText.setText(dateString);
+        });
 
-        Compromisso compromisso = new Compromisso(data, titulo, descricao, colorId);
+        builder.setView(testeView);
+        builder.show();
 
-        Bundle bundle = getIntent().getExtras();
-        int posicao = (int)bundle.get("POSITION");
-
-        MainActivity.atualizarCompromisso(compromisso, posicao);
-        FileUtil.editarCompromissos(compromisso, posicao, AddCompromissoActicity.this);
-
-        mainActivityScreen();
-
-    }
-
-    private void adicionarCompromisso() {
-
-        int colorId = Integer.parseInt(colorIdInput.getText().toString());
-        String data = dataInput.getText().toString();
-        String titulo = tituloInput.getText().toString();
-        String descricao = descricaoInput.getText().toString();
-
-        Compromisso compromisso = new Compromisso(data, titulo, descricao, colorId);
-
-        MainActivity.addComrpomisso(compromisso);
-        FileUtil.salvarCompromisso(compromisso, AddCompromissoActicity.this);
-
-        mainActivityScreen();
-
-    }
-
-    private void mainActivityScreen(){
-        Intent intent = new Intent(AddCompromissoActicity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
 }
