@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton addButton = findViewById(R.id.add_button);
 
         if(compromissosS == null){
+            //compromissosS = FileUtil.recuperarCompromissos(this);
             compromissosS = FileUtil.recuperarCompromissos(this);
             compromissos = CompromissosManager.getCompromissosFromString(compromissosS);
         }

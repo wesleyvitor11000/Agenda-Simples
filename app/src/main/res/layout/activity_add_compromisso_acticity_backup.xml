@@ -158,7 +158,7 @@
 
         app:fabCustomSize="64dp"
 
-        android:backgroundTint="@color/dark_theme_purple"
+        android:backgroundTint="@color/dark_theme_purple_primary"
         app:tint="@color/white"
 
 

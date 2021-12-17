@@ -1,6 +1,7 @@
 package com.example.agendasimples;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CompromissosManager {
 
@@ -28,11 +29,20 @@ public class CompromissosManager {
                     compromissoAtual = fileText.substring(start, end);
                 }
 
-                int dataStart = compromissoAtual.indexOf("data:");
-                dataStart = compromissoAtual.indexOf(":", dataStart) + 2;
-                int dataEnd   = compromissoAtual.indexOf("\n", dataStart);
-                String data = compromissoAtual.substring(dataStart, dataEnd);
+                int diaStart = compromissoAtual.indexOf("dia:");
+                diaStart = compromissoAtual.indexOf(":", diaStart) + 2;
+                int diaEnd   = compromissoAtual.indexOf("\n", diaStart);
+                int dia = Integer.parseInt(compromissoAtual.substring(diaStart, diaEnd));
 
+                int mesStart = compromissoAtual.indexOf("mes:");
+                mesStart = compromissoAtual.indexOf(":", mesStart) + 2;
+                int mesEnd   = compromissoAtual.indexOf("\n", mesStart);
+                int mes = Integer.parseInt(compromissoAtual.substring(mesStart, mesEnd));
+
+                int anoStart = compromissoAtual.indexOf("ano:");
+                anoStart = compromissoAtual.indexOf(":", anoStart) + 2;
+                int anoEnd   = compromissoAtual.indexOf("\n", anoStart);
+                int ano = Integer.parseInt(compromissoAtual.substring(anoStart, anoEnd));
 
                 int tituloStart = compromissoAtual.indexOf("titulo:");
                 tituloStart = compromissoAtual.indexOf(":", tituloStart) + 2;
@@ -48,6 +58,9 @@ public class CompromissosManager {
                 colorIdStart = compromissoAtual.indexOf(":", colorIdStart) + 2;
                 int colorIdEnd   = compromissoAtual.indexOf("\n", colorIdStart);
                 int colorId = Integer.parseInt(compromissoAtual.substring(colorIdStart, colorIdEnd));
+
+                Calendar data = Calendar.getInstance();
+                data.set(ano,mes,dia);
 
                 Compromisso compromisso = new Compromisso(data, titulo, descricao, colorId);
                 compromissos.add(compromisso);
@@ -80,19 +93,13 @@ public class CompromissosManager {
 
             if(end==-1){return compromissos;}
 
-            System.out.println("Start -> " + start + " End -> " + end);
-
             start = compromissos.indexOf("#", end - 1);
-
-            System.out.println("Start -> " + start + " End -> " + end);
 
             if(start == -1){return compromissos;}
 
-            System.out.println("Start -> " + start + " End -> " + end);
 
             end = compromissos.indexOf("#", start + 1);
 
-            System.out.println("Start -> " + start + " End -> " + end);
         }
 
         if(end == -1){
@@ -101,12 +108,7 @@ public class CompromissosManager {
             oldCompromisso = compromissos.substring(start, end);
         }
 
-        System.out.println(oldCompromisso);
-
         novoComrpomisso = compromissos.replace(oldCompromisso, novoComrpomisso);
-
-        System.out.println("NOVO COMPROMISSO ---> ");
-        System.out.println(novoComrpomisso);
 
         return novoComrpomisso;
 
@@ -160,11 +162,14 @@ public class CompromissosManager {
             return compromissoString;
         }
 
-        compromissoString = "\n#\n" +
-                             "data: " + compromisso.getData() + "\n" +
+
+        compromissoString = "#\n" +
+                             "dia: " + compromisso.getDia() + "\n" +
+                             "mes: " + compromisso.getMes() + "\n" +
+                             "ano: " + compromisso.getAno() + "\n" +
                              "titulo: " + compromisso.getTitulo() + "\n" +
                              "descricao: " + compromisso.getDescricao() + "\n" +
-                             "idColor: " + compromisso.getColorId() + "\n";
+                             "idColor: " + compromisso.getColorId() + "\n\n";
 
         return compromissoString;
 

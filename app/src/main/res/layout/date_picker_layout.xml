@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
 
-        android:background="@color/dark_theme_purple"/>
+        android:background="@color/dark_theme_purple_primary"/>
 
     <DatePicker
         android:id="@+id/date"
